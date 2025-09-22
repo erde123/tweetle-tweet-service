@@ -43,10 +43,10 @@ test:
   script:
     - ./gradlew test
 
-#sonarqube-check:
-#  stage: sonarqube-check
-#  script:
-#    - ./gradlew test jacocoTestReport sonar
+sonarqube-check:
+  stage: sonarqube-check
+  script:
+    - ./gradlew test jacocoTestReport sonar
 
 docker-build:
   stage: deploy
