@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: tweetle-tweet-service
+#  security:
+#    oauth2:
+#      resource server:
+#        jwt:
+#          jwk-set-uri:
+#          issuer-uri:
+#          audiences:
+
+#  data:
+#    mongodb:
+#      uri:
+#      username:
+#      password:
+#      auto-index-creation:
