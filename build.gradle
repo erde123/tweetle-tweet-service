@@ -2,6 +2,8 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.5.6'
     id 'io.spring.dependency-management' version '1.1.7'
+    id "org.sonarqube" version "5.1.0.4882"
+    id "jacoco"
 }
 
 group = 'nl.fontys'
@@ -36,6 +38,24 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
+
 tasks.named('test') {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+sonar {
+    properties {
+        property "sonar.projectKey", "I556050_tweetle-tweet-service_78f23dfa-d9d0-4a4e-bcb3-2a8dfce7cdf3"
+        property "sonar.projectName", "Tweetle Tweet Service"
+        property "sonar.qualitygate.wait", true
+        property "sonar.token", "sqp_d907d1790948fb2b5b58703c65218b1925b20b24" // user token. added for running Gradle locally
+        property "sonar.exclusions", [
+        ]
+    }
 }
