@@ -51,10 +51,10 @@ tasks.named('test') {
 
 sonar {
     properties {
-        property "sonar.projectKey", "I556050_tweetle-tweet-service_78f23dfa-d9d0-4a4e-bcb3-2a8dfce7cdf3"
+        property "sonar.projectKey", "I556050_tweetle-tweet-service_8647e0bc-e3c5-40a5-95f5-f35748ef9265"
         property "sonar.projectName", "Tweetle Tweet Service"
         property "sonar.qualitygate.wait", true
-        property "sonar.token", "sqp_d907d1790948fb2b5b58703c65218b1925b20b24" // user token. added for running Gradle locally
+        property "sonar.token", "sqp_1c04abb7ecfd764feb9650eddde87e7638feeec9" // user token. added for running Gradle locally
         property "sonar.exclusions", [
         ]
     }
