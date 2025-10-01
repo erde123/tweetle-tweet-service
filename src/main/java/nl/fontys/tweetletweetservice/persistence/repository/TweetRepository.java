@@ -1,4 +1,9 @@
 package nl.fontys.tweetletweetservice.persistence.repository;
 
-public interface TweetRepository {
+import nl.fontys.tweetletweetservice.persistence.document.Tweet;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TweetRepository extends MongoRepository<Tweet, String> {
 }
