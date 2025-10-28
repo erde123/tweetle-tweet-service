@@ -10,11 +10,11 @@ spring:
     service-registry:
       auto-registration:
         enabled: false
-#  security:
-#    oauth2:
-#      resourceserver:
-#        jwt:
-#          issuer-uri: http://localhost:9999  # Dummy value for tests
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9999
 eureka:
   client:
     enabled: false
