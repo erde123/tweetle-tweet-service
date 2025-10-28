@@ -15,17 +15,13 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .cors(e -> Customizer.withDefaults())
-//                .csrf(e -> Customizer.withDefaults())
-                .csrf(e -> e.disable())
-                .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll()   // allow everything
-                )
-//                .authorizeHttpRequests(req -> req.requestMatchers(
-//                                "/api/tweets/**")
-//                        .permitAll()
-//                        .anyRequest()
-//                        .authenticated())
-//                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
+                .csrf(e -> Customizer.withDefaults())
+                .authorizeHttpRequests(req -> req.requestMatchers(
+                                "/api/tweets/**")
+                        .permitAll()
+                        .anyRequest()
+                        .authenticated())
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
                 .build();
     }
 }
