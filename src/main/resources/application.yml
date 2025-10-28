@@ -13,18 +13,17 @@ eureka:
 spring:
   application:
     name: tweetle-tweet-service
-#  security:
-#    oauth2:
-#      resource server:
-#        jwt:
-#          jwk-set-uri:
-#          issuer-uri:
-#          audiences:
+  security:
+    oauth2:
+      resource server:
+        jwt:
+          issuer-uri: https://dev-vkjc2qc55bwr1ikt.eu.auth0.com/
+          audiences: https://tweetle/api
 
   data:
     mongodb:
       uri: mongodb://admin:password@localhost:27017/tweetservice?authSource=admin
-      database: tweetservice
+      database: tweetdb
       username: admin
       password: password
       auto-index-creation: true
