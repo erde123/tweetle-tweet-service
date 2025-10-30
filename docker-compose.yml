@@ -18,8 +18,8 @@ services:
 
   tweet-service:
     build: .
-    container_name: tweet-api
     restart: on-failure
+    container_name: tweet-api
     ports:
       - "8002:8002"
     depends_on:
@@ -29,7 +29,7 @@ services:
       SPRING_DATA_MONGODB_URI: mongodb://admin:password@tweet-mongo:27017/tweetdb?authSource=admin
       SPRING_DATA_MONGODB_DATABASE: tweetdb
       SERVER_PORT: 8002
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://localhost:8761/eureka
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
       EUREKA_INSTANCE_PREFER_IP_ADDRESS: "true"
       SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: https://dev-vkjc2qc55bwr1ikt.eu.auth0.com/
       SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_AUDIENCES: https://tweetle/api

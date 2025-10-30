@@ -6,7 +6,7 @@ eureka:
     prefer-ip-address: true
   client:
     service-url:
-      defaultZone: http://eureka-server:8761/eureka   # 👈 use service name if Eureka also runs in Docker
+      defaultZone: http://eureka-server:8761/eureka
     register-with-eureka: true
     fetch-registry: true
 
@@ -16,7 +16,7 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb://admin:password@tweet-mongo:27017/tweetdb?authSource=admin  # 👈 key change
+      uri: mongodb://admin:password@tweet-mongo:27017/tweetdb?authSource=admin
       database: tweetdb
       username: admin
       password: password
