@@ -1,0 +1,23 @@
+server:
+  port: 8002
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka   # 👈 use service name if Eureka also runs in Docker
+    register-with-eureka: true
+    fetch-registry: true
+
+spring:
+  application:
+    name: tweetle-tweet-service
+
+  data:
+    mongodb:
+      uri: mongodb://admin:password@tweet-mongo:27017/tweetdb?authSource=admin  # 👈 key change
+      database: tweetdb
+      username: admin
+      password: password
+      auto-index-creation: true
