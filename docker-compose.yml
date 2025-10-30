@@ -1,0 +1,44 @@
+version: '3'
+services:
+
+  tweet-mongo:
+    image: mongo:latest
+    container_name: tweet-mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: tweetdb
+    volumes:
+      - tweet-mongo-data:/data/db
+    networks:
+      - tweetle-network
+
+  tweet-service:
+    build: .
+    container_name: tweet-api
+    restart: on-failure
+    ports:
+      - "8002:8002"
+    depends_on:
+      - tweet-mongo
+    environment:
+      SPRING_APPLICATION_NAME: tweetle-tweet-service
+      SPRING_DATA_MONGODB_URI: mongodb://admin:password@tweet-mongo:27017/tweetdb?authSource=admin
+      SPRING_DATA_MONGODB_DATABASE: tweetdb
+      SERVER_PORT: 8002
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://localhost:8761/eureka
+      EUREKA_INSTANCE_PREFER_IP_ADDRESS: "true"
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: https://dev-vkjc2qc55bwr1ikt.eu.auth0.com/
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_AUDIENCES: https://tweetle/api
+    networks:
+      - tweetle-network
+
+volumes:
+  tweet-mongo-data:
+
+networks:
+  tweetle-network:
+    driver: bridge
