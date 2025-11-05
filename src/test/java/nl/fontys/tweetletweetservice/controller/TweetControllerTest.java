@@ -34,7 +34,7 @@ class TweetControllerTest {
     void setUp() {
         testTweet = new Tweet();
         testTweet.setId("1");
-        testTweet.setUserId("user123");
+        testTweet.setUserId(123L);
         testTweet.setContent("Hello world!");
         testTweet.setCreatedAt(new Date());
     }
