@@ -21,3 +21,13 @@ spring:
       username: admin
       password: password
       auto-index-creation: true
+
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: admin
+    password: admin
+
+rabbitmq:
+  exchange:
+    name: tweetle.exchange

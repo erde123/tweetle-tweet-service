@@ -22,8 +22,18 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb://admin:password@localhost:27017/tweetservice?authSource=admin
+      uri: mongodb://admin:password@localhost:27017/tweetdb?authSource=admin
       database: tweetdb
       username: admin
       password: password
       auto-index-creation: true
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
+
+rabbitmq:
+  exchange:
+    name: tweetle.exchange
