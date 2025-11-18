@@ -18,4 +18,9 @@ public class TweetService {
     public Tweet findById (String id) { return tweetRepository.findById(id).orElse(null); }
 
     public void deleteById (String id) { tweetRepository.deleteById(id); }
+
+    public void deleteTweetsFromUser(Long userId) {
+        tweetRepository.deleteByUserId(userId);
+        System.out.println("Deleted all tweets from user " + userId);
+    }
 }

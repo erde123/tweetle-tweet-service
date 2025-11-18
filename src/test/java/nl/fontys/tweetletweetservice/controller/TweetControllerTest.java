@@ -1,5 +1,6 @@
 package nl.fontys.tweetletweetservice.controller;
 
+import nl.fontys.tweetletweetservice.business.service.PublishService;
 import nl.fontys.tweetletweetservice.business.service.TweetService;
 import nl.fontys.tweetletweetservice.persistence.document.Tweet;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,6 +26,9 @@ class TweetControllerTest {
     @Mock
     private TweetService tweetService;
 
+    @Mock
+    private PublishService publishService;
+
     @InjectMocks
     private TweetController tweetController;
 
@@ -39,7 +43,6 @@ class TweetControllerTest {
         testTweet.setCreatedAt(new Date());
     }
 
-    // --- POST /api/tweets ---
     @Test
     void saveTweet_WhenSuccessful_ShouldReturnOkResponse() {
         doNothing().when(tweetService).save(any(Tweet.class));
@@ -59,7 +62,6 @@ class TweetControllerTest {
         verify(tweetService, times(1)).save(testTweet);
     }
 
-    // --- GET /api/tweets ---
     @Test
     void getAllTweets_WhenSuccessful_ShouldReturnAllTweets() {
         List<Tweet> expectedTweets = Arrays.asList(testTweet);
@@ -80,7 +82,6 @@ class TweetControllerTest {
         verify(tweetService, times(1)).findAll();
     }
 
-    // --- GET /api/tweets/{id} ---
     @Test
     void getTweetById_WhenTweetExists_ShouldReturnTweet() {
         when(tweetService.findById("1")).thenReturn(testTweet);
@@ -111,7 +112,6 @@ class TweetControllerTest {
         verify(tweetService, times(1)).findById("1");
     }
 
-    // --- DELETE /api/tweets/{id} ---
     @Test
     void deleteTweetById_WhenTweetExists_ShouldReturnOkResponse() {
         when(tweetService.findById("1")).thenReturn(testTweet);
@@ -122,6 +122,7 @@ class TweetControllerTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Tweet deleted successfully", response.getBody());
         verify(tweetService, times(1)).deleteById("1");
+        verify(publishService).publishTweetDeleted(any());
     }
 
     @Test
