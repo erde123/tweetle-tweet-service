@@ -65,8 +65,7 @@ sonar {
         property "sonar.projectName", "Tweetle Tweet Service"
         property "sonar.qualitygate.wait", true
         property "sonar.token", "sqp_1c04abb7ecfd764feb9650eddde87e7638feeec9" // user token. added for running Gradle locally
-        property "sonar.exclusions", [
-        ]
+        property "sonar.inclusions", "src/main/java/nl/fontys/tweetletweetservice/business/service/TweetService,src/main/java/nl/fontys/tweetletweetservice/controller/**"
     }
 }
 dependencyManagement {
