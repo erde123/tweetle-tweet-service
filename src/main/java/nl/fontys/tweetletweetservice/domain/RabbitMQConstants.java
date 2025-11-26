@@ -7,6 +7,7 @@ public final class RabbitMQConstants {
 
     public static final String USER_AUTH_EXCHANGE = "user-auth-exchange";
     public static final String USER_GENERAL_EXCHANGE = "user-general-exchange";
+    public static final String TWEET_EXCHANGE = "tweetle.exchange";
 
     public static final String USER_AUTH_REGISTERED_KEY = "user.auth.registered";
     public static final String USER_UPDATED_KEY = "user.updated";

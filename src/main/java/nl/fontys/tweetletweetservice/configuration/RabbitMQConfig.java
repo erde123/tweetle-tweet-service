@@ -8,13 +8,13 @@ import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFacto
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import static nl.fontys.tweetletweetservice.domain.RabbitMQConstants.TWEET_USER_DELETE_QUEUE;
 import static nl.fontys.tweetletweetservice.domain.RabbitMQConstants.TWEET_USER_REGISTER_QUEUE;
 import static nl.fontys.tweetletweetservice.domain.RabbitMQConstants.TWEET_USER_UPDATE_QUEUE;
+import static nl.fontys.tweetletweetservice.domain.RabbitMQConstants.TWEET_EXCHANGE;
 import static nl.fontys.tweetletweetservice.domain.RabbitMQConstants.USER_AUTH_EXCHANGE;
 import static nl.fontys.tweetletweetservice.domain.RabbitMQConstants.USER_AUTH_REGISTERED_KEY;
 import static nl.fontys.tweetletweetservice.domain.RabbitMQConstants.USER_DELETED_KEY;
@@ -24,12 +24,9 @@ import static nl.fontys.tweetletweetservice.domain.RabbitMQConstants.USER_UPDATE
 @Configuration
 public class RabbitMQConfig {
 
-    @Value("${rabbitmq.exchange.name}")
-    private String tweetExchangeName;
-
     @Bean
     public TopicExchange tweetExchange() {
-        return new TopicExchange(tweetExchangeName);
+        return new TopicExchange(TWEET_EXCHANGE);
     }
 
     @Bean
