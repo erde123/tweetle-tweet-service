@@ -27,7 +27,7 @@ sonarqube-check:
   stage: sonarqube-check
   script:
     - ./gradlew test jacocoTestReport sonar
-    -
+
 zap-security-scan:
   stage: security
   dependencies:
